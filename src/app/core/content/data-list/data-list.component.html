@@ -1,0 +1,81 @@
+<div class="row">
+  <div class="search-item">
+    <label>客户电话：</label>
+    <input
+      style="width: 100px"
+      dTextInput
+      type="text"
+      placeholder="请输入手机号"
+      [(ngModel)]="phone"
+    />
+  </div>
+  <div class="search-item">
+    <label>付款方式：</label>
+    <d-select style="width: 70px" [options]="payStatusOptions" [filterKey]="'label'" [(ngModel)]="payStatus"></d-select>
+  </div>
+  <div class="search-item">
+    <label>是否发送：</label>
+    <d-select style="width: 70px" [options]="sendOptions" [filterKey]="'label'" [(ngModel)]="sendStatus"></d-select>
+  </div>
+  <div class="search-item">
+    <d-range-datepicker-pro
+      [format]="'y-MM-dd HH:mm:ss'"
+      [appendToBody]="false"
+      [(ngModel)]="dateRange"
+      [showTime]="true"
+      (ngModelChange)="onChange($event)"
+    ></d-range-datepicker-pro>
+  </div>
+  <div class="search-item">
+    <d-button style="margin-right: 8px" (click)="search()">搜索</d-button>
+  </div>
+</div>
+<div class="row">
+  <d-data-table dLoading [showLoading]="loading" [dataSource]="coalConfList" [fixHeader]="true" [containFixHeaderHeight]="true" [scrollable]="true" [resizeable]="true" [showOperationArea]="true">
+    <thead dTableHead>
+    <tr dTableRow>
+      <th dHeadCell *ngFor="let colOption of columns" [style]="{width: colOption.width}">{{ colOption.header }}</th>
+      <th dHeadCell style="width: 140px"></th>
+    </tr>
+    </thead>
+    <tbody dTableBody>
+    <ng-template let-rowItem="rowItem" let-rowIndex="rowIndex">
+      <tr dTableRow (dblclick)="edite(rowItem)">
+        <td dTableCell *ngFor="let colOption of columns" [style]="{width: colOption.width}">
+          {{ colOption.fieldType === 'date' ? (rowItem[colOption.field] | i18nDate: 'yyyy-MM-dd HH:mm:ss':false) : rowItem[colOption.field] }}
+        </td>
+        <td dTableCell style="width: 140px">
+          <a nz-button nzType="link" style="padding: 0 10px" (click)="view(rowItem)">查看</a>
+          <a nz-button nzType="link" style="padding: 0 10px" (click)="download(rowItem)">下载</a>
+<!--          <a nz-button nzType="link" style="padding: 0 10px"-->
+<!--             nz-popconfirm-->
+<!--             nzPopconfirmTitle="确定删除?"-->
+<!--             (nzOnConfirm)="delete(rowItem.id)">删除</a>-->
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template #noResultTemplateRef>
+      <div style="text-align: center; margin-top: 20px">无数据</div>
+    </ng-template>
+    </tbody>
+  </d-data-table>
+  <div style="margin-top: 10px">
+    <label>【总个数: {{ pager.total }}】</label>
+    <label>【总收入: {{ income }}】</label>
+    <label>【已收: {{ havePay }}】</label>
+    <label>【欠款: {{ noPay }}】</label>
+  </div>
+  <d-pagination
+    style="padding: 10px 0;"
+    [size]="'sm'"
+    [total]="pager.total"
+    [(pageSize)]="pager.pageSize"
+    [(pageIndex)]="pager.pageIndex"
+    [canViewTotal]="true"
+    [canChangePageSize]="true"
+    [maxItems]="5"
+    (pageIndexChange)="changeIndex($event)"
+    (pageSizeChange)="changePageSize($event)"
+  >
+  </d-pagination>
+</div>

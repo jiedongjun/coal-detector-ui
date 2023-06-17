@@ -1,0 +1,73 @@
+<table style="border: 1px solid #cecbcb; width: 100%; height: 180px; border-spacing: inherit;">
+  <tbody>
+  <tr>
+    <th rowspan="6">{{ coalConf.id }}</th>
+    <th>电话</th>
+    <th colspan="2"><input dTextInput type="text" [(ngModel)]="coalConf.phone" (blur)="complete()"/></th>
+    <th>M</th>
+    <th>A</th>
+    <th>V</th>
+    <th>m</th>
+    <th>S</th>
+    <th>C</th>
+    <th>常规</th>
+    <th>弹筒</th>
+    <th>报告</th>
+  </tr>
+  <tr>
+    <th>项目</th>
+    <th colspan="2"><input  dTextInput type="text" [(ngModel)]="coalConf.project" (blur)="complete()"/></th>
+    <th><input dTextInput type="text" [(ngModel)]="coalConf.up_M" (blur)="complete()"/></th>
+    <th><input dTextInput type="text" [(ngModel)]="coalConf.up_A" (blur)="complete()"/></th>
+    <th><input dTextInput type="text" [(ngModel)]="coalConf.up_V" (blur)="complete()"/></th>
+    <th><input dTextInput type="text" [(ngModel)]="coalConf.low_m" (blur)="complete()"/></th>
+    <th rowspan="2"><input dTextInput type="text" [(ngModel)]="coalConf.up_S" (blur)="complete()"/></th>
+    <th rowspan="2"><input dTextInput type="text" [(ngModel)]="coalConf.up_C" (blur)="complete()"/></th>
+    <th rowspan="2"><d-select [options]="sendOptions" [filterKey]="'label'" [(ngModel)]="sendStatus" (ngModelChange)="complete()"></d-select></th>
+    <th rowspan="2"><input dTextInput type="text" [(ngModel)]="coalConf.eggCone1" (blur)="complete()"/></th>
+    <th class="disable-th" rowspan="2">{{ coalConf.report1 | numberRound: 0 }}</th>
+  </tr>
+  <tr>
+    <th>煤种</th>
+    <th colspan="2"><input  dTextInput type="text" [(ngModel)]="coalConf.coalType" (blur)="complete()"/></th>
+    <th><input dTextInput type="text" [(ngModel)]="coalConf.up_M1" (blur)="complete()"/></th>
+    <th><input dTextInput type="text" [(ngModel)]="coalConf.up_A1" (blur)="complete()"/></th>
+    <th><input dTextInput type="text" [(ngModel)]="coalConf.up_V1" (blur)="complete()"/></th>
+    <th><input dTextInput type="text" [(ngModel)]="coalConf.low_m1" (blur)="complete()"/></th>
+  </tr>
+  <tr>
+    <th>时价</th>
+    <th><input dTextInput type="text" [(ngModel)]="coalConf.price1" (blur)="complete()"/></th>
+    <th><input dTextInput type="text" [(ngModel)]="coalConf.price2" (blur)="complete()"/></th>
+    <th><input dTextInput type="text" [(ngModel)]="coalConf.up_M2" (blur)="complete()"/></th>
+    <th><input dTextInput type="text" [(ngModel)]="coalConf.up_A2" (blur)="complete()"/></th>
+    <th><input dTextInput type="text" [(ngModel)]="coalConf.up_V2" (blur)="complete()"/></th>
+    <th><input dTextInput type="text" [(ngModel)]="coalConf.low_m2" (blur)="complete()"/></th>
+    <th colspan="2"><input dTextInput type="text" [(ngModel)]="coalConf.sc1" (blur)="complete()"/></th>
+    <th class="disable-th">固定碳</th>
+    <th class="disable-th">{{ coalConf.eggCone2 | numberRound: 2 }}</th>
+    <th><input dTextInput type="text" [(ngModel)]="coalConf.report2" (blur)="complete()"/></th>
+  </tr>
+  <tr>
+    <th rowspan="2">备注</th>
+    <th colspan="2"><input dTextInput type="text" [(ngModel)]="coalConf.note1" (blur)="complete()"/></th>
+    <th><input dTextInput type="text" [(ngModel)]="coalConf.up_M3" (blur)="complete()"/></th>
+    <th><input dTextInput type="text" [(ngModel)]="coalConf.up_A3" (blur)="complete()"/></th>
+    <th><input dTextInput type="text" [(ngModel)]="coalConf.up_V3" (blur)="complete()"/></th>
+    <th><input dTextInput type="text" [(ngModel)]="coalConf.low_m3" (blur)="complete()"/></th>
+    <th colspan="2" class="disable-th">{{ coalConf.sc2 | numberRound: 4 }}</th>
+    <th rowspan="2" class="disable-th">{{ coalConf.soft3 | numberRound: 0 }}</th>
+    <th rowspan="2" ><input  dTextInput type="text" [(ngModel)]="coalConf.eggCone3" (blur)="complete()"/></th>
+    <th rowspan="2"><input  dTextInput type="text" [(ngModel)]="coalConf.report3" (blur)="complete()"/></th>
+  </tr>
+  <tr>
+    <th><input dTextInput type="text" [(ngModel)]="coalConf.note2" (blur)="complete()"/></th>
+    <th><d-select style="width: 100px" [options]="payStatusOptions" [filterKey]="'label'" [(ngModel)]="payStatus" (ngModelChange)="complete()"></d-select></th>
+    <th class="disable-th">{{ coalConf.up_M4 | numberRound: 1 }}</th>
+    <th class="disable-th">{{ coalConf.up_A4 | numberRound: 2 }}</th>
+    <th class="disable-th">{{ coalConf.up_V4 | numberRound: 2 }}</th>
+    <th class="disable-th">{{ coalConf.low_m4 | numberRound: 2 }}</th>
+    <th class="disable-th" colspan="2">{{ coalConf.sc3 | numberRound: 4 }}</th>
+  </tr>
+  </tbody>
+</table>

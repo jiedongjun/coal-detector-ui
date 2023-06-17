@@ -30,7 +30,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "./node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
+              "src/styles.scss",
+              "node_modules/ng-devui/devui.min.css",
+              "node_modules/@devui-design/icons/icomoon/devui-icon.css"
             ],
             "scripts": []
           },
@@ -39,8 +42,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "5mb",
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -69,6 +72,7 @@
             },
             "development": {
               "browserTarget": "coal-detector-ui:build:development"
+
             }
           },
           "defaultConfiguration": "development"
@@ -93,12 +97,18 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "./node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
+              "src/styles.scss",
+              "node_modules/ng-devui/devui.min.css",
+              "node_modules/@devui-design/icons/icomoon/devui-icon.css"
             ],
             "scripts": []
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

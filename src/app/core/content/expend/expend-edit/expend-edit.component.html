@@ -1,0 +1,37 @@
+<div [dMovable]="true" [handle]="header" [moveEl]="parent">
+  <div class="modal-header" #header>{{ title }}</div>
+  <div class="modal-body" style="height: 200px; padding: 0 20px;">
+    <div class="row" style="display: flex; margin-top: 20px">
+      <div style="width: 50%; margin-right: 10px">
+        <label>支出时间：</label>
+        <d-datepicker-pro
+          [format]="'y-MM-dd HH:mm:ss'"
+          [appendToBody]="false"
+          [(ngModel)]="payTime"
+          [showTime]="true"
+        >
+        </d-datepicker-pro>
+      </div>
+      <div style="width: 50%">
+        <label>支付金额：</label>
+        <input dTextInput placeholder="请输入支出金额" [(ngModel)]="expend.amount" />
+      </div>
+    </div>
+    <div class="row" style="display: flex; ">
+      <div style="width: 50%; margin-right: 10px">
+        <label>支付方式：</label>
+        <input dTextInput style="width: 250px" placeholder="请输入支出方式" [(ngModel)]="expend.payWay" />
+      </div>
+      <div style="width: 50%">
+        <label>填写人：</label>
+        <input dTextInput [(ngModel)]="expend.writer" />
+      </div>
+    </div>
+    <div>
+      <label>说明：</label>
+      <textarea dTextarea placeholder="请输入支出说明" [(ngModel)]="expend.direction"></textarea>
+    </div>
+    <d-button style="margin-top: 10px; float: right" (btnClick)="save()">确认</d-button>
+  </div>
+  <i class="icon-close" (click)="close()"></i>
+</div>

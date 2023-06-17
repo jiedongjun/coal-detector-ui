@@ -1,0 +1,22 @@
+<div [dMovable]="true" [handle]="header" [moveEl]="parent">
+  <div class="modal-header" #header>授权</div>
+  <div class="modal-body" style="height: 475px">
+    <div class="up">
+      <textarea dTextarea placeholder="请输入需要授权的密钥(用户key文件中的内容)" [(ngModel)]="oldKey"></textarea>
+      <label>有效时间: </label>
+      <d-datepicker-pro
+        [format]="'y-MM-dd HH:mm:ss'"
+        [appendToBody]="false"
+        [(ngModel)]="validTime"
+        [showTime]="true"
+      >
+      </d-datepicker-pro>
+    </div>
+    <d-button style="margin-top: 10px; float: right" [disabled]="oldKey == null || oldKey == ''" (btnClick)="createKey()">生成密钥</d-button>
+    <div class="down">
+      <textarea dTextarea [disabled]="true" [(ngModel)]="newKey"></textarea>
+    </div>
+    <d-button style="margin-top: 10px; float: right" [disabled]="newKey == null || newKey == ''" (btnClick)="getKeyFile()">生成密钥文件</d-button>
+  </div>
+  <i class="icon-close" (click)="close($event)"></i>
+</div>

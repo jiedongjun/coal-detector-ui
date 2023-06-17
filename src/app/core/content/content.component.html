@@ -1,0 +1,27 @@
+<script src="content.component.ts"></script>
+<section style="height: 94vh">
+  <d-splitter class="splitter-border" [orientation]="orientation" [splitBarSize]="splitBarSize">
+    <d-splitter-pane [size]="size"
+                     [minSize]="minSize"
+                     [maxSize]="maxSize"
+                     [collapsible]="true"
+                     [collapseDirection]="'before'" style="overflow-y: auto">
+      <div class="pane-content">
+        <div class="row">
+          <d-button (click)="add()">新建</d-button>
+          <d-button (btnClick)="expend()">支出明细</d-button>
+          <d-button (btnClick)="bond()">计算</d-button>
+          <d-button *ngIf="keyService._auth" (click)="setAuth()">授权</d-button>
+        </div>
+        <div *ngFor="let coalConf of coalConfList; let i = index">
+          <app-data-view [coalConf]="coalConf" (closeCoalConf)="closeCoalConf($event, i)"></app-data-view>
+        </div>
+      </div>
+    </d-splitter-pane>
+    <d-splitter-pane style="overflow-y: auto">
+      <div class="pane-content">
+        <app-data-list #list (dbClickRow)="editRow($event)"></app-data-list>
+      </div>
+    </d-splitter-pane>
+  </d-splitter>
+</section>

@@ -1,0 +1,7 @@
+<div class="row">
+  <div>
+    <d-button (btnClick)="viewReport()">报告预览</d-button>
+    <d-button style="float: right" bsStyle="text" (btnClick)="closeCoal()"><d-icon [icon]="'icon-close'"></d-icon></d-button>
+  </div>
+  <app-data-edit [coalConf]="coalConf" (checkCoalConf)="checkCoalConf($event)"></app-data-edit>
+</div>

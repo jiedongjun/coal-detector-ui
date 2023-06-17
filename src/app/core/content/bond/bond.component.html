@@ -1,0 +1,66 @@
+<div [dMovable]="true" [handle]="header" [moveEl]="parent">
+  <div class="modal-header" #header>计算</div>
+  <div class="modal-body" style="padding: 20px;">
+    <table style="border: 1px solid #cecbcb; width: 100%; height: 180px; border-spacing: inherit;">
+     <tbody>
+      <tr><th colspan="4" class="th-title">粘结计算</th></tr>
+      <tr>
+        <th colSpan="2">5比1</th>
+        <th colSpan="2">3比1</th>
+      </tr>
+      <tr>
+        <th>总质量</th>
+        <th><input dTextInput type="text" [(ngModel)]="bond.row1_1" (blur)="complete()"/></th>
+        <th>总质量</th>
+        <th><input dTextInput type="text" [(ngModel)]="bond.row1_2" (blur)="complete()"/></th>
+      </tr>
+      <tr>
+        <th>第一次剩余块</th>
+        <th><input dTextInput type="text" [(ngModel)]="bond.row2_1" (blur)="complete()"/></th>
+        <th>第一次剩余块</th>
+        <th><input dTextInput type="text" [(ngModel)]="bond.row2_2" (blur)="complete()"/></th>
+      </tr>
+      <tr>
+        <th>第二次剩余块</th>
+        <th><input dTextInput type="text" [(ngModel)]="bond.row3_1" (blur)="complete()"/></th>
+        <th>第二次剩余块</th>
+        <th><input dTextInput type="text" [(ngModel)]="bond.row3_2" (blur)="complete()"/></th>
+      </tr>
+      <tr>
+        <th>结果</th>
+        <th class="disable-th">{{ bond.row4_1 | numberRound : 2 }}</th>
+        <th>结果</th>
+        <th class="disable-th">{{ bond.row4_2 | numberRound : 2 }}</th>
+      </tr>
+      <tr><th colspan="4" class="th-title">回收计算</th></tr>
+      <tr>
+        <th>皮重</th>
+        <th>总重</th>
+        <th>去泥重量</th>
+        <th>浮选后重量</th>
+      </tr>
+      <tr>
+        <th><input dTextInput type="text" [(ngModel)]="bond.row5_1" (blur)="complete()"/></th>
+        <th><input dTextInput type="text" [(ngModel)]="bond.row5_2" (blur)="complete()"/></th>
+        <th><input dTextInput type="text" [(ngModel)]="bond.row5_3" (blur)="complete()"/></th>
+        <th><input dTextInput type="text" [(ngModel)]="bond.row5_4" (blur)="complete()"/></th>
+      </tr>
+      <tr>
+        <th colspan="4" class="th-title">结果</th>
+      </tr>
+      <tr>
+        <th>煤泥</th>
+        <th>精煤</th>
+        <th>矸石</th>
+      </tr>
+      <tr>
+        <th class="disable-th">{{ bond.row6_1 | numberRound : 2 }}</th>
+        <th class="disable-th">{{ bond.row6_2 | numberRound : 2 }}</th>
+        <th class="disable-th">{{ bond.row6_3 | numberRound : 2 }}</th>
+        <th class="disable-th"></th>
+      </tr>
+     </tbody>
+    </table>
+  </div>
+  <i class="icon-close" (click)="close()"></i>
+</div>

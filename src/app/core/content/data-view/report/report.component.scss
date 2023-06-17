@@ -1,0 +1,48 @@
+.modal-header {
+  padding: 20px 20px 0 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.icon-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 16px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f2f2f3;
+    color: #252b3a;
+  }
+}
+
+table{
+  border-spacing: inherit;
+}
+
+td{
+  border: 1px solid;
+  text-align: center;
+  height: 30px;
+}
+
+.table-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  //align-items: center;
+  padding: 0 40px;
+  color: #575d6c;
+  font-size: medium;
+}
+
+.red-font{
+  color: red;
+}
+
+input{
+  text-align: center;
+}
+
+

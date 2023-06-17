@@ -1,0 +1,76 @@
+<div [dMovable]="true" [handle]="header" [moveEl]="parent">
+  <div class="modal-header" #header>支出明细</div>
+  <div class="row" style="display: block; margin-top: 20px">
+    <d-button style="margin-left: 25px" (click)="create()">新增</d-button>
+  </div>
+  <div class="row">
+    <div style="display: flex; padding: 0 30px; margin-top: 10px;">
+      <div class="search-item" style="margin-right: 10px">
+        <label>填写人：</label>
+        <input
+          style="width: 100px"
+          dTextInput
+          type="text"
+          placeholder="请输入填写人"
+          [(ngModel)]="writer"
+        />
+      </div>
+      <div class="search-item" style="margin-right: 10px">
+        <d-range-datepicker-pro
+          [format]="'y-MM-dd HH:mm:ss'"
+          [appendToBody]="false"
+          [(ngModel)]="dateRange"
+          [showTime]="true"
+          (ngModelChange)="onChange($event)"
+        ></d-range-datepicker-pro>
+      </div>
+      <div class="search-item">
+        <d-button style="margin-right: 8px" (click)="findAll()">搜索</d-button>
+      </div>
+    </div>
+  </div>
+  <div class="modal-body" style="padding: 0 20px;">
+    <d-data-table dLoading [showLoading]="loading" size="xs" [dataSource]="expendList" [fixHeader]="true"
+                  [containFixHeaderHeight]="true" [scrollable]="true" [resizeable]="true" [showOperationArea]="true">
+      <thead dTableHead>
+      <tr dTableRow>
+        <th dHeadCell *ngFor="let colOption of columns" [style]="{width: colOption.width}">{{ colOption.header }}</th>
+        <th dHeadCell style="width: 150px"></th>
+      </tr>
+      </thead>
+      <tbody dTableBody>
+      <ng-template let-rowItem="rowItem" let-rowIndex="rowIndex">
+        <tr dTableRow>
+          <td dTableCell *ngFor="let colOption of columns" [style]="{width: colOption.width}">
+            {{ colOption.fieldType === 'date' ? (rowItem[colOption.field] | i18nDate: 'yyyy-MM-dd HH:mm:ss':false) : rowItem[colOption.field] }}
+          </td>
+          <td dTableCell style="width: 160px">
+            <a nz-button nzType="link" (click)="create(rowItem)">编辑</a>
+            <a nz-button nzType="link"
+               nz-popconfirm
+               nzPopconfirmTitle="确定删除?"
+               (nzOnConfirm)="delete(rowItem)">删除</a>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template #noResultTemplateRef>
+        <div style="text-align: center; margin-top: 20px">无数据</div>
+      </ng-template>
+      </tbody>
+    </d-data-table>
+    <d-pagination
+      style="margin: 10px; padding-bottom: 20px"
+      [size]="'sm'"
+      [total]="pager.total"
+      [(pageSize)]="pager.pageSize"
+      [(pageIndex)]="pager.pageIndex"
+      [canViewTotal]="true"
+      [canChangePageSize]="true"
+      [maxItems]="5"
+      (pageIndexChange)="changeIndex($event)"
+      (pageSizeChange)="changePageSize($event)"
+    >
+    </d-pagination>
+  </div>
+  <i class="icon-close" (click)="close($event)"></i>
+</div>
